@@ -26,6 +26,7 @@ body {
     width: 75vw;
     /* padding: 10px; */
     margin: 17px 0px;
+    position: relative;
 
 
 }
@@ -140,4 +141,63 @@ body {
     right: 20px;
     opacity: 0;
     transition: all 1s ease-out;
+}
+
+.buttons>* {
+    margin: 0 12px;
+}
+
+.sign-up {
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(212, 212, 212);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+
+}
+
+.sign-up:hover {
+    transform: scale(1.05);
+    transition: all 0.1s ease-in-out;
+    color: white;
+}
+
+.log-in {
+    background-color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 75px;
+    color: black;
+    padding: 10px;
+
+}
+
+.log-in:hover {
+    font-weight: bold;
+    transform: scale(1.05);
+    transition: all 0.1s ease-in-out;
+
+}
+
+.playbar {
+    position: absolute;
+    bottom: 0;
+    color: green;
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+
+}
+
+.song-btns {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.song-btns img {
+    width: 30px;
+    cursor: pointer;
 }
