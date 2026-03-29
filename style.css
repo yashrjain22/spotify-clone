@@ -181,11 +181,11 @@ body {
 }
 
 .playbar {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     color: green;
     background-color: white;
-    width: 100%;
+    width: 74vw;
     padding: 20px;
 
 }
@@ -200,4 +200,62 @@ body {
 .song-btns img {
     width: 30px;
     cursor: pointer;
+}
+
+.song-list {
+    margin-top: 10px;
+    overflow-y: scroll;
+    height: 65vh;
+}
+
+.song-list>ul {
+    margin-top: 20px;
+}
+
+
+.song-list>ul>li {
+
+    gap: 34px;
+    cursor: pointer;
+    padding-top: 10px;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid white;
+    border-radius: 05px;
+    padding: 10px;
+    margin: 20px;
+}
+
+.playnow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.playnow>span {
+    margin-left: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100vh;
+}
+
+.info div {
+    font-size: 14px;
+}
+
+.playnow>img {
+    width: 30px;
+}
+
+.playnow>span {
+    font-size: 12px;
+
+    width: 64px;
 }
