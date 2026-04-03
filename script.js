@@ -1,9 +1,10 @@
 console.log("Hello, lets get started with js");
 let current_song = new Audio();
+const play = document.getElementById("play");
 async function getsongs() {
 
 
-    let song = await fetch("http://127.0.0.1:3000/songs");
+    let song = await fetch("http://127.0.0.1:3002/songs");
     let response = await song.text();
     // console.log(response);
     let div = document.createElement("div");
@@ -24,13 +25,15 @@ const playMusic = (song) => {
     // let audio = new Audio ("/songs/" + song + ".mp3");
     current_song.src = ("/songs/" + song + ".mp3");
     current_song.play()
+    play.src = "pause.svg";
+    document.querySelector(".song-info").innerHTML = song.replaceAll("%20", " ").replace(".mp3", "");
+    document.querySelector(".song-time").innerHTML = "0:00"
 }
 
 
 
 async function main() {
     // Get the list of songs from the server
-    let current_song;
     let songs = await getsongs();
     let songUL = document.querySelector(".song-list").getElementsByTagName("ul")[0]
     for (const song of songs) {
@@ -55,6 +58,20 @@ async function main() {
         })
 
 
+    })
+
+    play.addEventListener("click", () => {
+        if (current_song.src == "") {
+            console.log("No song selected");
+        }
+        else if (current_song.paused) {
+            current_song.play();
+            play.src = "pause.svg";
+        }
+        else {
+            current_song.pause();
+            play.src = "play.svg";
+        }
     })
 
     // play the first song
