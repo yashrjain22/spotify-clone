@@ -40,6 +40,13 @@
     width: 14px;
 }
 
+.black-cover {
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
 }

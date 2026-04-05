@@ -8,7 +8,7 @@ function secondsToMinSec(seconds) {
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 async function getsongs() {
-    let song = await fetch("http://127.0.0.1:3002/songs");
+    let song = await fetch(window.location.origin + "/songs");
     let response = await song.text();
     // console.log(response);
     let div = document.createElement("div");
@@ -100,8 +100,23 @@ async function main() {
         document.querySelector(".song-time").innerHTML = secondsToMinSec(Math.floor(current_song.currentTime)) + " / " + secondsToMinSec(Math.floor(current_song.duration));
         document.querySelector(".circle").style.left = (current_song.currentTime / current_song.duration) * 100 + "%";
         document.querySelector(".overbar").style.width = (current_song.currentTime / current_song.duration) * 100 + "%";
+    })
+
+    document.querySelector(".seekbar").addEventListener("click", (e) => {
+        let clickPosition = e.clientX - document.querySelector(".underbar").getBoundingClientRect().left;
+        let barWidth = document.querySelector(".underbar").offsetWidth;
+        let clickPercentage = clickPosition / barWidth;
+        current_song.currentTime = (clickPercentage) * current_song.duration;
+    })
 
 
+    document.querySelector(".hamburger").addEventListener("click", () => {
+        document.querySelector(".left").classList.toggle("left-active");
+        document.querySelector(".right").classList.toggle("black-cover");
+    })
+    document.querySelector(".hamburger-close").addEventListener("click", () => {
+        document.querySelector(".left").classList.toggle("left-active");
+        document.querySelector(".right").classList.toggle("black-cover");
     })
 }
 

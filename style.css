@@ -22,6 +22,10 @@ body {
 
 }
 
+.logo img {
+    width: 100px;
+}
+
 .right {
     width: 75vw;
     /* padding: 10px; */
@@ -261,6 +265,7 @@ body {
 }
 
 .seekbar {
+    cursor: pointer;
     width: 100%;
     height: 5px;
     background-color: #ababab;
@@ -304,4 +309,72 @@ body {
     font-size: 20px;
     color: #000000;
     width: 200px;
+}
+
+.hamburger-close {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+}
+
+@media(max-width: 1400px) {
+
+    .left {
+        position: absolute;
+        left: -100%;
+        background-color: rgb(30, 30, 30);
+        width: 70vw;
+        height: 100vh;
+        padding: 30px 10px;
+        margin: 0px;
+        transition: left 0.5s ease;
+        z-index: 2;
+    }
+
+    .left-active {
+        left: 0;
+    }
+
+
+    .right {
+        width: 97vw;
+        margin: 1.5vw;
+        height: 97vh;
+    }
+
+    .playbar {
+        width: 90vw;
+        margin: 0 5vw;
+    }
+
+    .hamburger-close {
+        display: inline;
+        cursor: pointer;
+        top: 6vh;
+        right: 4vw;
+        position: absolute;
+        background-color: black;
+        border: 2px solid white;
+        border-radius: 100%;
+        padding: 10px;
+    }
+
+    .hamburger {
+        display: inline;
+        cursor: pointer;
+    }
+
+    .hamburgerContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .underbar {
+        flex-direction: row;
+        gap: 30px;
+        width: 90vw;
+    }
 }
