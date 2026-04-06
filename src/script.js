@@ -8,7 +8,7 @@ function secondsToMinSec(seconds) {
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 async function getsongs() {
-    let song = await fetch(window.location.origin + "/songs");
+    let song = await fetch("../songs/");
     let response = await song.text();
     // console.log(response);
     let div = document.createElement("div");
@@ -26,11 +26,11 @@ async function getsongs() {
 
 
 const playMusic = (song, pause = false) => {
-    // let audio = new Audio ("/songs/" + song + ".mp3");
-    current_song.src = ("/songs/" + song + ".mp3");
+    // let audio = new Audio("../songs/" + song + ".mp3");
+    current_song.src = ("../songs/" + song + ".mp3");
     if (!pause) {
         current_song.play()
-        play.src = "pause.svg";
+        play.src = "../img/pause.svg";
     }
     document.querySelector(".song-info").innerHTML = song.replaceAll("%20", " ").replace(".mp3", "");
     document.querySelector(".song-time").innerHTML = "0:00"
@@ -47,13 +47,13 @@ async function main() {
     let songUL = document.querySelector(".song-list").getElementsByTagName("ul")[0]
     for (const song of songs) {
         songUL.innerHTML = songUL.innerHTML + `<li>
-                            <img class="invert" src="music.svg" alt="music">
+                            <img class="invert" src="../img/music.svg" alt="music">
                             <div class="info">
                                 <div>${song.replaceAll("%20", " ").replace(".mp3", "")}</div>
                                 <div>Song Artist</div>
                             </div>
                             <div class="playnow">
-                                <img class="invert " src="play-now.svg" alt="Play Now">
+                                <img class="invert " src="../img/play-now.svg" alt="Play Now">
                                 <span>Play Now</span>
                             </div>
                         </li>`
@@ -71,18 +71,18 @@ async function main() {
     play.addEventListener("click", () => {
         if (current_song.src == "") {
             console.log("No song selected");
-            current_song.src = ("/songs/" + songs[0]);
+            current_song.src = ("../songs/" + songs[0]);
             current_song.play();
-            play.src = "pause.svg";
+            play.src = "../img/pause.svg";
             document.querySelector(".song-info").innerHTML = current_song.src.split("/").pop().replaceAll("%20", " ").replace(".mp3", "");
         }
         else if (current_song.paused) {
             current_song.play();
-            play.src = "pause.svg";
+            play.src = "../img/pause.svg";
         }
         else {
             current_song.pause();
-            play.src = "play.svg";
+            play.src = "../img/play.svg";
         }
     })
 
@@ -118,6 +118,8 @@ async function main() {
         document.querySelector(".left").classList.toggle("left-active");
         document.querySelector(".right").classList.toggle("black-cover");
     })
+
+
 }
 
 main();
